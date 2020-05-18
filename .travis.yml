@@ -15,6 +15,6 @@ deploy:
   keep-history: true
 # added
   target_branch: master # generate static files to master
-on:
+  on:
   branch: hexo-source # source code of hexo
   local-dir: public
