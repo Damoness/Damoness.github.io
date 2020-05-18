@@ -4,8 +4,6 @@ date: 2020-05-18 16:02:01
 tags:
 ---
 
-# Mac 上GitHub 配置 SSH Key
-
 ## 创建一个新的SSH key
 
 1. 打开终端,
@@ -14,7 +12,7 @@ tags:
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
- 3. 当提示出现”Enter a file in which to save the key” ,可以按enter,接受默认的文件名和位置, 后面会用到
+3. 当提示出现”Enter a file in which to save the key” ,可以按enter,接受默认的文件名和位置, 后面会用到
 ```
 Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
 ```
