@@ -16,5 +16,5 @@ deploy:
 # added
   target_branch: master # generate static files to master
   on:
-  branch: hexo-source # source code of hexo
+    branch: hexo-source # source code of hexo
   local-dir: public
