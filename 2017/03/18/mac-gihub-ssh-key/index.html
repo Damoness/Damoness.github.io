@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Mac 上GitHub 配置 SSH Key | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="创建一个新的SSH key 打开终端,  输入创建命令, 引号部分是你的GitHub 邮箱地址 1ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;  当提示出现”Enter a file in which to save the key” ,可以按enter,接受默认的文件名和位置, 后面会用到 1Enter a fil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac 上GitHub 配置 SSH Key">
+<meta property="og:url" content="http://yoursite.com/2017/03/18/mac-gihub-ssh-key/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="创建一个新的SSH key 打开终端,  输入创建命令, 引号部分是你的GitHub 邮箱地址 1ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;  当提示出现”Enter a file in which to save the key” ,可以按enter,接受默认的文件名和位置, 后面会用到 1Enter a fil">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-03-18T16:02:01.000Z">
+<meta property="article:modified_time" content="2020-05-18T13:37:08.521Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mac-gihub-ssh-key" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/18/mac-gihub-ssh-key/" class="article-date">
+  <time datetime="2017-03-18T16:02:01.000Z" itemprop="datePublished">2017-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac 上GitHub 配置 SSH Key
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建一个新的SSH-key"><a href="#创建一个新的SSH-key" class="headerlink" title="创建一个新的SSH key"></a>创建一个新的SSH key</h2><ol>
+<li><p>打开终端,</p>
+</li>
+<li><p>输入创建命令, 引号部分是你的GitHub 邮箱地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当提示出现”Enter a file in which to save the key” ,可以按enter,接受默认的文件名和位置, 后面会用到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter a file in which to save the key (&#x2F;Users&#x2F;you&#x2F;.ssh&#x2F;id_rsa): [Press enter]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提示你输入2次密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase): [输入密码]</span><br><span class="line">Enter same passphrase again: [再次输入密码]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="增加-SSH-key-到ssh-agent"><a href="#增加-SSH-key-到ssh-agent" class="headerlink" title="增加 SSH key 到ssh-agent"></a>增加 SSH key 到ssh-agent</h2><ol>
+<li>启动ssh-agent<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br></pre></td></tr></table></figure></li>
+<li>如果你是使用的macOS Sierra 10.12.2或之后的系统,你需要修改你的~/.ssh/config配置文件 来加载keys到ssh-agent 和 存贮密码到keychain<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line"> AddKeysToAgent yes</span><br><span class="line"> UseKeychain yes</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure></li>
+<li>增加你的SSH 私有key到ssh-agent, 并存储你的密码到keychain. 这里的id_rsa就是上面创建时填写的名字<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -K ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="增加SSH-key到-GitHub-账号"><a href="#增加SSH-key到-GitHub-账号" class="headerlink" title="增加SSH key到 GitHub 账号"></a>增加SSH key到 GitHub 账号</h2><ol>
+<li>拷贝你的SSH key到剪切板<br>这里id_ras.pub是上面创建名字</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>登录你的GitHub账号,进入Settings,点击SSH and GPG keys.<br>点击New SSH key 或 Add SSH key<br>把你复制的SSH key粘贴到key所对应的输入框中,记住SSH key代码的前后不能留空或回车. 上面的Title可以任意输入.</li>
+</ol>
+<h2 id="测试一下SSH-key"><a href="#测试一下SSH-key" class="headerlink" title="测试一下SSH key"></a>测试一下SSH key</h2><ol>
+<li>输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
+<li>可能会有一段警告,输入yes就可以了</li>
+<li>如果出现<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi Damoness! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+就说明已经成功了</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/18/mac-gihub-ssh-key/" data-id="ckacj9seo00012iiyatrk0fu9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/18/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/18/mac-gihub-ssh-key/">Mac 上GitHub 配置 SSH Key</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
