@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://damoness.github.io/sitemap.xml 
